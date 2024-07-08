@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+option java_package = "server";
+option java_outer_classname = "CipherServiceProto";
+
+service Cipher {
+   rpc startConnection(EmptyMessage) returns (ClientData) {}
+   rpc sendMessagePool(StringRequest) returns (StringResponse) {};
+   rpc sendMessageReq(StringRequest) returns (StringResponse) {};
+}
+
+message StringRequest {
+  string id = 1;
+  string message = 2;
+}
+
+message ClientData {
+  string id = 1;
+  string public_key = 2;
+  string private_key = 3;
+}
+
+message StringResponse {
+  string response = 1;
+}
+
+message EmptyMessage {}
